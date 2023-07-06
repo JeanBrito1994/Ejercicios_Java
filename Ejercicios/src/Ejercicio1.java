@@ -1,24 +1,29 @@
+import java.util.Arrays;
+
 public class Ejercicio1 {
     public static void main(String[] args) {
         /*
-         * Escribe un programa que muestre por consola (con un print) los
-         * números de 1 a 100 (ambos incluidos y con un salto de línea entre
-         * cada impresión), sustituyendo los siguientes:
-         * - Múltiplos de 3 por la palabra "fizz".
-         * - Múltiplos de 5 por la palabra "buzz".
-         * - Múltiplos de 3 y de 5 a la vez por la palabra "fizzbuzz".
+         * Escribe una función que reciba dos palabras (String) y retorne
+         * verdadero o falso (Bool) según sean o no anagramas.
+         * - Un Anagrama consiste en formar una palabra reordenando TODAS
+         *   las letras de otra palabra inicial.
+         * - NO hace falta comprobar que ambas palabras existan.
+         * - Dos palabras exactamente iguales no son anagrama.
          */
 
-        for (int i = 1; i <= 100;i++){
-            if (i % 3 == 0 && i % 5 == 0){
-                System.out.println(i + " - fizzbuzz");
-            } else if (i % 3 == 0){
-                System.out.println(i + " - fizz");
-            } else if (i % 5 == 0){
-                System.out.println(i + " - buzz");
-            } else{
-                System.out.println(i);
-            }
+        Boolean result = isAnagram("paso", "sopa");
+        System.out.println(result);
+    }
+
+    public static Boolean isAnagram(String first, String second){
+        if(first.equals(second)){
+            return false;
         }
+        char[] firstToChars = first.toLowerCase().toCharArray();
+        char[] secondtToChars = second.toLowerCase().toCharArray();
+        Arrays.sort(firstToChars);
+        Arrays.sort(secondtToChars);
+
+        return Arrays.equals(firstToChars, secondtToChars);
     }
 }
